@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My HTML Page</title>
+  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
+  <!-- CSS only -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+</head>
+<body style="background-color: #343a40; padding-top: 50px">
+  <div style="margin: auto; width: 1500px " >
+  <table class="table table-striped table-dark table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Высота блока</th>
+      <th scope="col">Хэш блока</th>
+      <th scope="col">Время блока</th>
+      <th scope="col">Адрес майнера</th>
+      <th scope="col">Количество транзакций</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>{{block.height}}</td>
+      <td>{{block.hash}}</td>
+      <td>{{block.time}}</td>
+      <td>{{block.miner}}</td>
+      <td>{{block.transactions}}</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My HTML Page</title>
+  <link rel="stylesheet" type="text/css" title="Cool stylesheet" href="style.css">
+  <!-- CSS only -->
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous"></head>
+<body style="background-color: #343a40; padding-top: 10px">
+  <div style="margin: auto; width: 900px;">
+  <table class="table table-striped table-dark table-bordered table-hover">
+  <thead>
+    <tr>
+      <th scope="col">Высота блока</th>
+      <th scope="col">Хэш блока</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for block in blocks %}
+    <tr>
+      <td> <a href="blocks/{{block.height}}" >{{block.height}}</a> </td>
+      <td>{{block.hash}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+</div>
+<div style="margin: auto; width: 500px;">
+{% if blocks.has_other_pages %}
+  <ul class="pagination">
+    {% if blocks.has_previous %}
+      <li class="page-item"><a style="background-color: #212529; color: #FFFFFF; border-color: #343a40" class="page-link" href="?page={{ blocks.previous_page_number }}">&laquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><a style="background-color: gray; color: #FFFFFF; border-color: #343a40" class="page-link" href="?page={{ blocks.start_index }}">&laquo;</a></li>
+    {% endif %}
+    {% for i in blocks.paginator.page_range %}
+      {% if blocks.number == i %}
+        <li class="page-item active"><a class="page-link" href="?page={{ i }}">{{ i }} <span class="sr-only">(current)</span></a></li>
+      {% else %}
+        <li class="page-item"><a style="background-color: #212529; color: #FFFFFF; border-color: #343a40" class="page-link" href="?page={{ i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if blocks.has_next %}
+      <li class="page-item"><a style="background-color: #212529; color: #FFFFFF; border-color: #343a40" class="page-link" href="?page={{ blocks.next_page_number }}">&raquo;</a></li>
+    {% else %}
+      <li class="page-item disabled"><a style="background-color: gray; color: #FFFFFF; border-color: #343a40" class="page-link" href="?page={{ blocks.end_index }}">&raquo;</a></li>
+    {% endif %}
+  </ul>
+{% endif %}
+</div>
+</body>
+</html>
