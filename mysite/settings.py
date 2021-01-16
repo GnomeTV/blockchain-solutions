@@ -25,7 +25,7 @@ SECRET_KEY = '2ll^&kz4k=xwavej4+!4(gmrw2$sz1iu7sx(4i3ve3%j**ne7!'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["206.189.102.133","localhost"]
 
 
 # Application definition
@@ -82,7 +82,7 @@ DATABASES = {
 
         'USER': 'herasima',
 
-        'PASSWORD': '',
+        'PASSWORD': 'password',
 
         'HOST': '127.0.0.1',
 
